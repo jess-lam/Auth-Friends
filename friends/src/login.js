@@ -1,5 +1,5 @@
 import React from "react";
-import 
+import { axiosWithAuth } from "./utils/axiosWithAuth";
 
 
 class Login extends React.Component {
@@ -25,7 +25,7 @@ class Login extends React.Component {
         .post("/api/login", this.state.credentials)
         .then(res => {
             localStorage.setItem("token", res.data.payload)
-            this.props.history.push("/api/friends")
+            this.props.history.push("/protected")
         })
         .catch(err => {
             localStorage.removeItem("token");

@@ -1,7 +1,9 @@
 import React from 'react';
 import './App.css';
+import FriendsList from "./FriendsList";
 
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import ProtectedRoute from './ProtectedRoute';
 
 function App() {
   return (
@@ -15,7 +17,7 @@ function App() {
         </li>
       </ul>
       <Switch>
-        
+        <ProtectedRoute exact path="/protected" component={FriendsList} />
       </Switch>
     </div>
   );
