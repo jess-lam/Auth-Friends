@@ -25,7 +25,7 @@ class FriendsList extends React.Component {
         return(
             <div className="friendsList">
                 <h1>Friends List</h1>
-                {friendsList.map((item, index) => (
+                {this.state.friendsList.map((item, index) => (
                     <p key={index}>
                         Name: {item.name}
                         Age: {item.age}

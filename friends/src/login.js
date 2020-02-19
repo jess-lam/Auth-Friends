@@ -1,5 +1,6 @@
 import React from "react";
 import { axiosWithAuth } from "./utils/axiosWithAuth";
+import ProtectedRoute from "./ProtectedRoute";
 
 
 class Login extends React.Component {
@@ -24,8 +25,10 @@ class Login extends React.Component {
         axiosWithAuth()
         .post("/api/login", this.state.credentials)
         .then(res => {
+            console.log(res);
             localStorage.setItem("token", res.data.payload)
             this.props.history.push("/protected")
+            console.log(this.props);
         })
         .catch(err => {
             localStorage.removeItem("token");
@@ -36,7 +39,7 @@ class Login extends React.Component {
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={this.login}>
                     <label>Username</label>
                     <input
                         type="text"
